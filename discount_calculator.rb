@@ -1,4 +1,5 @@
 require_relative './item.rb'
+require 'terminal-table'
 
 
 # declaring variables for the storing the data
@@ -25,8 +26,7 @@ def get_item
   set_item("apple")
   end
 
-  
-  print_receipt
+  print_bill
 end
 
 def set_item(item_name)
@@ -35,6 +35,12 @@ def set_item(item_name)
   $final_bill << [item.item_name, item.item_quantity, "$#{item.item_discounted_price}"]
   $discounted_price.push(item.item_discounted_price)
   $total_actual_price.push(item.item_acutal_price)
+end
+
+def print_bill 
+  table = Terminal::Table.new :headings => ['Item', 'Quantity', 'Price'], :rows => $final_bill
+  puts table
+  print_receipt
 end
 
 def print_receipt
