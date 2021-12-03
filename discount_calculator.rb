@@ -8,6 +8,24 @@ $input_item = []
 $final_bill = []
 $total_actual_price = []
 
+
+def start_app
+  p 'Welcome'
+  puts "Enter 1 for admin \n 2 for customer"
+
+  @value = gets.chomp()
+
+  case @value
+  when '1'
+    p 'Your are admin'
+    return 
+  when '2'
+    get_item
+    return 
+  end 
+
+end
+
 def get_item
   puts "Please enter all the items purchased separated by a comma"
   $input_item = gets.chomp.split(',')
@@ -46,7 +64,7 @@ end
 def print_receipt
   amount_saved = ($total_actual_price.sum - $discounted_price.sum).round(2)
   puts"\n Total price: $#{ $discounted_price.sum.round(2)} \n You saved $#{amount_saved} today."
-  puts "total actual price : #{$total_actual_price.sum}"
 end
 
-get_item
+start_app
+
