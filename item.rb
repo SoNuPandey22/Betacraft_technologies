@@ -1,4 +1,7 @@
+require_relative './discount_calculator.rb'
 require 'pry'
+
+
 class Item
   attr_accessor :item_name, :item_quantity, :item_discounted_price, :item_acutal_price
   def initialize(item_name, item_quantity)
@@ -18,7 +21,6 @@ class Item
         unit_price: 0.99 
       }
     }
-    
     @item_name = item_name
     @item_quantity = item_quantity
     @item_discounted_price = calculate_item_discounted_price
