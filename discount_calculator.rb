@@ -16,7 +16,7 @@ def get_item
     set_item("milk") 
   end
   if $input_item.include?('bread')
-   set_item( "bread")
+   set_item("bread")
   end 
   if $input_item.include?('banana') 
    set_item("banana")
@@ -46,6 +46,7 @@ end
 def print_receipt
   amount_saved = ($total_actual_price.sum - $discounted_price.sum).round(2)
   puts"\n Total price: $#{ $discounted_price.sum.round(2)} \n You saved $#{amount_saved} today."
+  puts "total actual price : #{$total_actual_price.sum}"
 end
 
 get_item
