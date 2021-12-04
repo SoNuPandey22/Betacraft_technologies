@@ -1,4 +1,4 @@
-#Asked in Interview
+###Asked in Interview
 
 ## Sale Discount for a store
 
