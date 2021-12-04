@@ -3,6 +3,7 @@ require 'terminal-table'
 require 'pry'
 
 
+
 module My_shop
   # declaring variables for the storing the data
   $discounted_price = []
@@ -13,7 +14,7 @@ module My_shop
   def get_item
     puts "Please enter all the items purchased separated by a comma"
     $input_item = gets.chomp.split(',')
-
+  
     if $input_item.include?('milk')
       set_item("milk") 
     end
@@ -48,10 +49,10 @@ module My_shop
   def print_receipt
     amount_saved = ($total_actual_price.sum - $discounted_price.sum).round(2)
     puts"\n Total price: $#{ $discounted_price.sum.round(2)} \n You saved $#{amount_saved} today."
-    puts "total actual price : #{$total_actual_price.sum}"
   end
 
 end 
+
 
 
 class Shop
