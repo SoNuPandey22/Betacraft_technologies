@@ -5,7 +5,7 @@ require 'pry'
 
 
 module My_shop
-  # declaring variables for the storing the data
+  # item details containers
   $discounted_price = []
   $input_item = []
   $final_bill = []
@@ -14,21 +14,12 @@ module My_shop
   def get_item
     puts "Please enter all the items purchased separated by a comma"
     $input_item = gets.chomp.split(',')
-  
-    if $input_item.include?('milk')
-      set_item("milk") 
+    $items_details.each do |item_name , price_scheme|
+      if $input_item.include?(item_name)
+        set_item(item_name)
+      end
     end
-    if $input_item.include?('bread')
-     set_item("bread")
-    end 
-    if $input_item.include?('banana') 
-     set_item("banana")
-    end 
-
-    if $input_item.include?('apple') 
-    set_item("apple")
-    end
-
+    
     print_bill
   end
 

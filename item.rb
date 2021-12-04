@@ -1,9 +1,6 @@
 require 'pry'
-
-class Item
-  attr_accessor :item_name, :item_quantity, :item_discounted_price, :item_acutal_price
-  def initialize(item_name, item_quantity)
-    @items_details = {
+# Item available in the shop
+$items_details = {
       "milk" => {  
         unit_price: 3.97, 
         sale_on_quantity: 2,
@@ -24,8 +21,17 @@ class Item
         unit_price: 2.10,
         sale_on_quantity:2,
         sale_unit_price: 1.05 
+      },
+      "mango" => {
+        unit_price: 10.0,
+        sale_on_quantity: 4,
+        sale_unit_price: 8.0
       }
     }
+
+class Item
+  attr_accessor :item_name, :item_quantity, :item_discounted_price, :item_acutal_price
+  def initialize(item_name, item_quantity)
     @item_name = item_name
     @item_quantity = item_quantity
     @item_discounted_price = calculate_item_discounted_price
@@ -33,17 +39,17 @@ class Item
   end
   
   def calculate_item_discounted_price
-    if @items_details[@item_name].has_key?(:sale_unit_price)
-      sale_on_quantity = @items_details[@item_name][:sale_on_quantity]
-      final_item_price = discount_calculator(@items_details[@item_name][:unit_price], @items_details[@item_name][:sale_unit_price],sale_on_quantity)
+    if $items_details[@item_name].has_key?(:sale_unit_price)
+      sale_on_quantity = $items_details[@item_name][:sale_on_quantity]
+      final_item_price = discount_calculator($items_details[@item_name][:unit_price], $items_details[@item_name][:sale_unit_price],sale_on_quantity)
       return final_item_price
     else 
-      return @items_details[@item_name][:unit_price] * @item_quantity
+      return $items_details[@item_name][:unit_price] * @item_quantity
     end 
   end
 
   def calculate_item_acutal_price
-    return @items_details[@item_name][:unit_price] * @item_quantity
+    return $items_details[@item_name][:unit_price] * @item_quantity
   end
 
   def discount_calculator(item_unit_price, item_sale_unit_price, sale_on_quantity)
