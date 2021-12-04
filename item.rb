@@ -1,6 +1,4 @@
-require_relative './discount_calculator.rb'
 require 'pry'
-
 
 class Item
   attr_accessor :item_name, :item_quantity, :item_discounted_price, :item_acutal_price
